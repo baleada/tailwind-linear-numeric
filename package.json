@@ -1,0 +1,25 @@
+{
+  "name": "@baleada/tailwind-increment",
+  "version": "0.0.0",
+  "description": "Tailwind config objects that replace default class suffixes with numbers that consistently increment by 1 for each increase in size.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/baleada/tailwind-increment.git"
+  },
+  "keywords": [
+    "baleada",
+    "tailwind",
+    "increment",
+    "tailwind config"
+  ],
+  "author": {
+    "name": "Alex Vipond",
+    "email": "hello@alexvipond.dev",
+    "url": "https://alexvipond.dev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/baleada/tailwind-increment/issues"
+  },
+}
