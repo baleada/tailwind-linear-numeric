@@ -1,6 +1,6 @@
 {
   "name": "@baleada/tailwind-linear",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "Function that returns Tailwind config objects that replace default class suffixes with numbers that increment linearly.",
   "main": "index.js",
   "repository": {
