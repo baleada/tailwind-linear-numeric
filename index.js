@@ -9,6 +9,7 @@ const defaultTheme = require('tailwindcss/defaultTheme'),
         'letterSpacing',
         'lineHeight',
         'maxWidth',
+        'colors',
       ]
 
 module.exports = (options = {}) => {
@@ -111,7 +112,14 @@ module.exports = (options = {}) => {
             [increment * 10]: defaultTheme.maxWidth['6xl'],
             full: defaultTheme.maxWidth.full,
           },
-        }
+        },
+        colors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink']
+          .reduce((colors, color) => ({
+            ...colors,
+            [color]: [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: defaultTheme.colors[color][num * 100] }), {})
+          }), {})
+
+  tailwindLinear.colors = colors
 
   return only.reduce(
     (theme, property) => ({ ...theme, [property]: tailwindLinear[property] }),

@@ -1,7 +1,7 @@
 {
   "name": "@baleada/tailwind-linear",
-  "version": "0.2.1",
-  "description": "Function that returns Tailwind config objects that replace default class suffixes with numbers that increment linearly.",
+  "version": "0.3.0",
+  "description": "Function that returns configurations from Tailwind's default config file, aliasing all class names so that they use a linear numeric naming convention.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -11,6 +11,7 @@
     "baleada",
     "tailwind",
     "linear",
+    "naming convention",
     "tailwind config"
   ],
   "author": {
