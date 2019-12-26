@@ -13,7 +13,7 @@ const defaultTheme = require('tailwindcss/defaultTheme'),
 
 module.exports = (options = {}) => {
   const { multiplier = 100, only = incrementable } = options,
-        tailwindIncrement = {
+        tailwindLinear = {
           spacing: {
             px: defaultTheme.spacing.px,
             [multiplier * 0]: defaultTheme.spacing['0'],
@@ -114,7 +114,7 @@ module.exports = (options = {}) => {
         }
 
   return only.reduce(
-    (theme, property) => ({ ...theme, [property]: tailwindIncrement[property] }),
+    (theme, property) => ({ ...theme, [property]: tailwindLinear[property] }),
     {}
   )
 }
