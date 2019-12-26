@@ -1,153 +1,120 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme'),
+      incrementable = [
+        'spacing',
+        'borderRadius',
+        'borderWidth',
+        'boxShadow',
+        'fontSize',
+        'fontWeight',
+        'letterSpacing',
+        'lineHeight',
+        'maxWidth',
+      ]
 
-const spacing = {
-  px: defaultTheme.spacing.px,
-  '0': defaultTheme.spacing['0'],
-  '100': defaultTheme.spacing['1'],
-  '200': defaultTheme.spacing['2'],
-  '300': defaultTheme.spacing['3'],
-  '400': defaultTheme.spacing['4'],
-  '500': defaultTheme.spacing['5'],
-  '600': defaultTheme.spacing['6'],
-  '700': defaultTheme.spacing['8'],
-  '800': defaultTheme.spacing['10'],
-  '900': defaultTheme.spacing['12'],
-  '1000': defaultTheme.spacing['16'],
-  '1100': defaultTheme.spacing['20'],
-  '1200': defaultTheme.spacing['24'],
-  '1300': defaultTheme.spacing['32'],
-  '1400': defaultTheme.spacing['40'],
-  '1500': defaultTheme.spacing['48'],
-  '1600': defaultTheme.spacing['56'],
-  '1700': defaultTheme.spacing['64'],
-}
+module.exports = (options = {}) => {
+  const { multiplier = 100, only = incrementable } = options,
+        tailwindIncrement = {
+          spacing: {
+            px: defaultTheme.spacing.px,
+            [multiplier * 0]: defaultTheme.spacing['0'],
+            [multiplier * 1]: defaultTheme.spacing['1'],
+            [multiplier * 2]: defaultTheme.spacing['2'],
+            [multiplier * 3]: defaultTheme.spacing['3'],
+            [multiplier * 4]: defaultTheme.spacing['4'],
+            [multiplier * 5]: defaultTheme.spacing['5'],
+            [multiplier * 6]: defaultTheme.spacing['6'],
+            [multiplier * 7]: defaultTheme.spacing['8'],
+            [multiplier * 8]: defaultTheme.spacing['10'],
+            [multiplier * 9]: defaultTheme.spacing['12'],
+            [multiplier * 10]: defaultTheme.spacing['16'],
+            [multiplier * 11]: defaultTheme.spacing['20'],
+            [multiplier * 12]: defaultTheme.spacing['24'],
+            [multiplier * 13]: defaultTheme.spacing['32'],
+            [multiplier * 14]: defaultTheme.spacing['40'],
+            [multiplier * 15]: defaultTheme.spacing['48'],
+            [multiplier * 16]: defaultTheme.spacing['56'],
+            [multiplier * 17]: defaultTheme.spacing['64'],
+          },
+          borderRadius: {
+            [multiplier * 0]: defaultTheme.borderRadius.none,
+            [multiplier * 3]: defaultTheme.borderRadius.sm,
+            [multiplier * 4]: defaultTheme.borderRadius.default,
+            [multiplier * 5]: defaultTheme.borderRadius.lg,
+            full: defaultTheme.borderRadius.full,
+          },
+          borderWidth: {
+            [multiplier * 0]: defaultTheme.borderWidth['0'],
+            [multiplier * 4]: defaultTheme.borderWidth.default,
+            [multiplier * 5]: defaultTheme.borderWidth['2'],
+            [multiplier * 6]: defaultTheme.borderWidth['4'],
+            [multiplier * 7]: defaultTheme.borderWidth['8'],
+          },
+          boxShadow: {
+            [multiplier * 0]: defaultTheme.boxShadow.none,
+            [multiplier * 4]: defaultTheme.boxShadow.default,
+            [multiplier * 5]: defaultTheme.boxShadow.md,
+            [multiplier * 6]: defaultTheme.boxShadow.lg,
+            [multiplier * 7]: defaultTheme.boxShadow.xl,
+            [multiplier * 8]: defaultTheme.boxShadow['2xl'],
+            [`-${multiplier * 4}`]: defaultTheme.boxShadow.inner,
+            outline: defaultTheme.boxShadow.outline,
+          },
+          fontSize: {
+            [multiplier * 2]: defaultTheme.fontSize.xs,
+            [multiplier * 3]: defaultTheme.fontSize.sm,
+            [multiplier * 4]: defaultTheme.fontSize.base,
+            [multiplier * 5]: defaultTheme.fontSize.lg,
+            [multiplier * 6]: defaultTheme.fontSize.xl,
+            [multiplier * 7]: defaultTheme.fontSize['2xl'],
+            [multiplier * 8]: defaultTheme.fontSize['3xl'],
+            [multiplier * 9]: defaultTheme.fontSize['4xl'],
+            [multiplier * 10]: defaultTheme.fontSize['5xl'],
+            [multiplier * 11]: defaultTheme.fontSize['6xl'],
+          },
+          fontWeight: {
+            [multiplier * 1]: defaultTheme.fontWeight.hairline,
+            [multiplier * 2]: defaultTheme.fontWeight.thin,
+            [multiplier * 3]: defaultTheme.fontWeight.light,
+            [multiplier * 4]: defaultTheme.fontWeight.normal,
+            [multiplier * 5]: defaultTheme.fontWeight.medium,
+            [multiplier * 6]: defaultTheme.fontWeight.semibold,
+            [multiplier * 7]: defaultTheme.fontWeight.bold,
+            [multiplier * 8]: defaultTheme.fontWeight.extrabold,
+            [multiplier * 9]: defaultTheme.fontWeight.black,
+          },
+          letterSpacing: {
+            [`-${multiplier * 2}`]: defaultTheme.letterSpacing.tighter,
+            [`-${multiplier * 1}`]: defaultTheme.letterSpacing.tight,
+            [multiplier * 0]: defaultTheme.letterSpacing.normal,
+            [multiplier * 1]: defaultTheme.letterSpacing.wide,
+            [multiplier * 2]: defaultTheme.letterSpacing.wider,
+            [multiplier * 3]: defaultTheme.letterSpacing.widest,
+          },
+          lineHeight: {
+            [multiplier * 0]: defaultTheme.lineHeight.none,
+            [multiplier * 2]: defaultTheme.lineHeight.tight,
+            [multiplier * 3]: defaultTheme.lineHeight.snug,
+            [multiplier * 4]: defaultTheme.lineHeight.normal,
+            [multiplier * 5]: defaultTheme.lineHeight.relaxed,
+            [multiplier * 6]: defaultTheme.lineHeight.loose,
+          },
+          maxWidth: {
+            [multiplier * 1]: defaultTheme.maxWidth.xs,
+            [multiplier * 2]: defaultTheme.maxWidth.sm,
+            [multiplier * 3]: defaultTheme.maxWidth.md,
+            [multiplier * 4]: defaultTheme.maxWidth.lg,
+            [multiplier * 5]: defaultTheme.maxWidth.xl,
+            [multiplier * 6]: defaultTheme.maxWidth['2xl'],
+            [multiplier * 7]: defaultTheme.maxWidth['3xl'],
+            [multiplier * 8]: defaultTheme.maxWidth['4xl'],
+            [multiplier * 9]: defaultTheme.maxWidth['5xl'],
+            [multiplier * 10]: defaultTheme.maxWidth['6xl'],
+            full: defaultTheme.maxWidth.full,
+          },
+        }
 
-module.exports.borderRadius = {
-  '0': defaultTheme.borderRadius.none,
-  '300': defaultTheme.borderRadius.sm,
-  '400': defaultTheme.borderRadius.default,
-  '500': defaultTheme.borderRadius.lg,
-  full: defaultTheme.borderRadius.full,
-}
-
-module.exports.borderWidth = {
-  '0': defaultTheme.borderWidth['0'],
-  '400': defaultTheme.borderWidth.default,
-  '500': defaultTheme.borderWidth['2'],
-  '600': defaultTheme.borderWidth['4'],
-  '700': defaultTheme.borderWidth['8'],
-}
-
-module.exports.boxShadow = {
-  '0': defaultTheme.boxShadow.none,
-  '400': defaultTheme.boxShadow.default,
-  '500': defaultTheme.boxShadow.md,
-  '600': defaultTheme.boxShadow.lg,
-  '700': defaultTheme.boxShadow.xl,
-  '800': defaultTheme.boxShadow['2xl'],
-  '-400': defaultTheme.boxShadow.inner,
-  outline: defaultTheme.boxShadow.outline,
-}
-
-module.exports.fontSize = {
-  '200': defaultTheme.fontSize.xs,
-  '300': defaultTheme.fontSize.sm,
-  '400': defaultTheme.fontSize.base,
-  '500': defaultTheme.fontSize.lg,
-  '600': defaultTheme.fontSize.xl,
-  '700': defaultTheme.fontSize['2xl'],
-  '800': defaultTheme.fontSize['3xl'],
-  '900': defaultTheme.fontSize['4xl'],
-  '1000': defaultTheme.fontSize['5xl'],
-  '1100': defaultTheme.fontSize['6xl'],
-}
-
-module.exports.fontWeight = {
-  '100': defaultTheme.fontWeight.hairline,
-  '200': defaultTheme.fontWeight.thin,
-  '300': defaultTheme.fontWeight.light,
-  '400': defaultTheme.fontWeight.normal,
-  '500': defaultTheme.fontWeight.medium,
-  '600': defaultTheme.fontWeight.semibold,
-  '700': defaultTheme.fontWeight.bold,
-  '800': defaultTheme.fontWeight.extrabold,
-  '900': defaultTheme.fontWeight.black,
-}
-
-module.exports.height = {
-  auto: defaultTheme.height.auto,
-  ...spacing,
-  full: defaultTheme.height.full,
-  screen: defaultTheme.height.screen,
-}
-
-module.exports.letterSpacing = {
-  '-200': defaultTheme.letterSpacing.tighter,
-  '-100': defaultTheme.letterSpacing.tight,
-  '0': defaultTheme.letterSpacing.normal,
-  '100': defaultTheme.letterSpacing.wide,
-  '200': defaultTheme.letterSpacing.wider,
-  '300': defaultTheme.letterSpacing.widest,
-}
-
-module.exports.lineHeight = {
-  '0': defaultTheme.lineHeight.none,
-  '200': defaultTheme.lineHeight.tight,
-  '300': defaultTheme.lineHeight.snug,
-  '400': defaultTheme.lineHeight.normal,
-  '500': defaultTheme.lineHeight.relaxed,
-  '600': defaultTheme.lineHeight.loose,
-}
-
-module.exports.margin = (theme, { negative }) => ({
-  auto: defaultTheme.margin.auto,
-  ...spacing,
-  ...negative(spacing),
-}
-
-module.exports.maxWidth = {
-  '100': defaultTheme.maxWidth.xs,
-  '200': defaultTheme.maxWidth.sm,
-  '300': defaultTheme.maxWidth.md,
-  '400': defaultTheme.maxWidth.lg,
-  '500': defaultTheme.maxWidth.xl,
-  '600': defaultTheme.maxWidth['2xl'],
-  '700': defaultTheme.maxWidth['3xl'],
-  '800': defaultTheme.maxWidth['4xl'],
-  '900': defaultTheme.maxWidth['5xl'],
-  '1000': defaultTheme.maxWidth['6xl'],
-  full: defaultTheme.maxWidth.full,
-}
-
-module.exports.width = {
-  auto: defaultTheme.width.auto,
-  ...spacing,
-  '1/2': defaultTheme.width['1/2'],
-  '1/3': defaultTheme.width['1/3'],
-  '2/3': defaultTheme.width['2/3'],
-  '1/4': defaultTheme.width['1/4'],
-  '2/4': defaultTheme.width['2/4'],
-  '3/4': defaultTheme.width['3/4'],
-  '1/5': defaultTheme.width['1/5'],
-  '2/5': defaultTheme.width['2/5'],
-  '3/5': defaultTheme.width['3/5'],
-  '4/5': defaultTheme.width['4/5'],
-  '1/6': defaultTheme.width['1/6'],
-  '2/6': defaultTheme.width['2/6'],
-  '3/6': defaultTheme.width['3/6'],
-  '4/6': defaultTheme.width['4/6'],
-  '5/6': defaultTheme.width['5/6'],
-  '1/12': defaultTheme.width['1/12'],
-  '2/12': defaultTheme.width['2/12'],
-  '3/12': defaultTheme.width['3/12'],
-  '4/12': defaultTheme.width['4/12'],
-  '5/12': defaultTheme.width['5/12'],
-  '6/12': defaultTheme.width['6/12'],
-  '7/12': defaultTheme.width['7/12'],
-  '8/12': defaultTheme.width['8/12'],
-  '9/12': defaultTheme.width['9/12'],
-  '10/12': defaultTheme.width['10/12'],
-  '11/12': defaultTheme.width['11/12'],
-  full: defaultTheme.width.full,
-  screen: defaultTheme.width.screen,
+  return only.reduce(
+    (theme, property) => ({ ...theme, [property]: tailwindIncrement[property] }),
+    {}
+  )
 }

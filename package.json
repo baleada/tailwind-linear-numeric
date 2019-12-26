@@ -1,16 +1,16 @@
 {
-  "name": "@baleada/tailwind-increment",
-  "version": "0.0.1",
-  "description": "Tailwind config objects that replace default class suffixes with numbers that consistently increment by 1 for each increase in size.",
+  "name": "@baleada/tailwind-linear",
+  "version": "0.0.0",
+  "description": "Function that returns Tailwind config objects that replace default class suffixes with numbers that increment linearly.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/baleada/tailwind-increment.git"
+    "url": "git+https://gitlab.com/baleada/tailwind-linear.git"
   },
   "keywords": [
     "baleada",
     "tailwind",
-    "increment",
+    "linear",
     "tailwind config"
   ],
   "author": {
@@ -20,9 +20,21 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/baleada/tailwind-increment/issues"
+    "url": "https://gitlab.com/baleada/tailwind-linear/issues"
   },
   "peerDependencies": {
     "tailwindcss": "1.x"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^1.1.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-ava": "^7.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-nuxt": "^0.4.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
   }
 }
