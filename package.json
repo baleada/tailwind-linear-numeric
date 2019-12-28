@@ -1,6 +1,6 @@
 {
   "name": "@baleada/tailwind-linear",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Function that returns configurations from Tailwind's default config file, aliasing all class names so that they use a linear numeric naming convention.",
   "main": "index.js",
   "repository": {
@@ -10,9 +10,9 @@
   "keywords": [
     "baleada",
     "tailwind",
-    "linear",
-    "naming convention",
-    "tailwind config"
+    "tailwind config",
+    "linear numeric",
+    "naming convention"
   ],
   "author": {
     "name": "Alex Vipond",

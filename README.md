@@ -1,3 +1,3 @@
-# `@baleada/tailwind-increment`
+# `@baleada/tailwind-linear`
 
-Tailwind config objects that replace default class suffixes with numbers that consistently increment by 1 for each increase in size.
+Function that returns configurations from Tailwind's default config file, aliasing all class names so that they use a linear numeric naming convention.
