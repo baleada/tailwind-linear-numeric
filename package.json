@@ -1,12 +1,13 @@
 {
   "name": "@baleada/tailwind-linear",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Function that returns configurations from Tailwind's default config file, aliasing all class names so that they use a linear numeric naming convention.",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/baleada/tailwind-linear.git"
   },
+  "homepage": "https://baleada.netlify.com",
   "keywords": [
     "baleada",
     "tailwind",
