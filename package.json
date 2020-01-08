@@ -3,6 +3,10 @@
   "version": "0.3.2",
   "description": "Function that returns configurations from Tailwind's default config file, aliasing all class names so that they use a linear numeric naming convention.",
   "main": "index.js",
+  "scripts": {
+    "log": "node scripts/log.js",
+    "test": "npx ava"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/baleada/tailwind-linear.git"
@@ -29,6 +33,7 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.1.2",
+    "ava": "^2.4.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^13.0.1",
@@ -37,6 +42,15 @@
     "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-nuxt": "^0.4.3",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "tailwindcss": "^1.2.0-canary.5"
+  },
+  "ava": {
+    "babel": false,
+		"compileEnhancements": false,
+    "files": [
+      "./tests/**/*.test.js"
+    ],
+    "verbose": true
   }
 }

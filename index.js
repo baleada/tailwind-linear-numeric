@@ -1,46 +1,28 @@
 const defaultTheme = require('tailwindcss/defaultTheme'),
       incrementable = [
-        'spacing',
         'borderRadius',
         'borderWidth',
         'boxShadow',
+        'colors',
         'fontSize',
         'fontWeight',
         'letterSpacing',
         'lineHeight',
         'maxWidth',
-        'colors',
+        'spacing',
+        'strokeWidth',
+        'transitionDuration',
       ]
 
 module.exports = (options = {}) => {
   const { increment = 100, only = incrementable } = options,
         tailwindLinear = {
-          spacing: {
-            px: defaultTheme.spacing.px,
-            [increment * 0]: defaultTheme.spacing['0'],
-            [increment * 1]: defaultTheme.spacing['1'],
-            [increment * 2]: defaultTheme.spacing['2'],
-            [increment * 3]: defaultTheme.spacing['3'],
-            [increment * 4]: defaultTheme.spacing['4'],
-            [increment * 5]: defaultTheme.spacing['5'],
-            [increment * 6]: defaultTheme.spacing['6'],
-            [increment * 7]: defaultTheme.spacing['8'],
-            [increment * 8]: defaultTheme.spacing['10'],
-            [increment * 9]: defaultTheme.spacing['12'],
-            [increment * 10]: defaultTheme.spacing['16'],
-            [increment * 11]: defaultTheme.spacing['20'],
-            [increment * 12]: defaultTheme.spacing['24'],
-            [increment * 13]: defaultTheme.spacing['32'],
-            [increment * 14]: defaultTheme.spacing['40'],
-            [increment * 15]: defaultTheme.spacing['48'],
-            [increment * 16]: defaultTheme.spacing['56'],
-            [increment * 17]: defaultTheme.spacing['64'],
-          },
           borderRadius: {
             [increment * 0]: defaultTheme.borderRadius.none,
             [increment * 3]: defaultTheme.borderRadius.sm,
             [increment * 4]: defaultTheme.borderRadius.default,
-            [increment * 5]: defaultTheme.borderRadius.lg,
+            [increment * 5]: defaultTheme.borderRadius.md,
+            [increment * 6]: defaultTheme.borderRadius.lg,
             full: defaultTheme.borderRadius.full,
           },
           borderWidth: {
@@ -52,6 +34,7 @@ module.exports = (options = {}) => {
           },
           boxShadow: {
             [increment * 0]: defaultTheme.boxShadow.none,
+            [increment * 3]: defaultTheme.boxShadow.sm,
             [increment * 4]: defaultTheme.boxShadow.default,
             [increment * 5]: defaultTheme.boxShadow.md,
             [increment * 6]: defaultTheme.boxShadow.lg,
@@ -99,18 +82,42 @@ module.exports = (options = {}) => {
             [increment * 5]: defaultTheme.lineHeight.relaxed,
             [increment * 6]: defaultTheme.lineHeight.loose,
           },
-          maxWidth: {
-            [increment * 1]: defaultTheme.maxWidth.xs,
-            [increment * 2]: defaultTheme.maxWidth.sm,
-            [increment * 3]: defaultTheme.maxWidth.md,
-            [increment * 4]: defaultTheme.maxWidth.lg,
-            [increment * 5]: defaultTheme.maxWidth.xl,
-            [increment * 6]: defaultTheme.maxWidth['2xl'],
-            [increment * 7]: defaultTheme.maxWidth['3xl'],
-            [increment * 8]: defaultTheme.maxWidth['4xl'],
-            [increment * 9]: defaultTheme.maxWidth['5xl'],
-            [increment * 10]: defaultTheme.maxWidth['6xl'],
-            full: defaultTheme.maxWidth.full,
+          maxWidth: getMaxWidth, // Using named function instead of anonymous function for testing purposes
+          spacing: {
+            px: defaultTheme.spacing.px,
+            [increment * 0]: defaultTheme.spacing['0'],
+            [increment * 1]: defaultTheme.spacing['1'],
+            [increment * 2]: defaultTheme.spacing['2'],
+            [increment * 3]: defaultTheme.spacing['3'],
+            [increment * 4]: defaultTheme.spacing['4'],
+            [increment * 5]: defaultTheme.spacing['5'],
+            [increment * 6]: defaultTheme.spacing['6'],
+            [increment * 7]: defaultTheme.spacing['8'],
+            [increment * 8]: defaultTheme.spacing['10'],
+            [increment * 9]: defaultTheme.spacing['12'],
+            [increment * 10]: defaultTheme.spacing['16'],
+            [increment * 11]: defaultTheme.spacing['20'],
+            [increment * 12]: defaultTheme.spacing['24'],
+            [increment * 13]: defaultTheme.spacing['32'],
+            [increment * 14]: defaultTheme.spacing['40'],
+            [increment * 15]: defaultTheme.spacing['48'],
+            [increment * 16]: defaultTheme.spacing['56'],
+            [increment * 17]: defaultTheme.spacing['64'],
+          },
+          strokeWidth: {
+            [increment * 0]: defaultTheme.strokeWidth['0'],
+            [increment * 1]: defaultTheme.strokeWidth['1'],
+            [increment * 2]: defaultTheme.strokeWidth['2'],
+          },
+          transitionDuration: {
+            [increment * 1]: defaultTheme.transitionDuration['75'],
+            [increment * 2]: defaultTheme.transitionDuration['100'],
+            [increment * 3]: defaultTheme.transitionDuration['150'],
+            [increment * 4]: defaultTheme.transitionDuration['200'],
+            [increment * 5]: defaultTheme.transitionDuration['300'],
+            [increment * 6]: defaultTheme.transitionDuration['500'],
+            [increment * 7]: defaultTheme.transitionDuration['700'],
+            [increment * 8]: defaultTheme.transitionDuration['1000'],
           },
         },
         colors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink']
@@ -125,4 +132,22 @@ module.exports = (options = {}) => {
     (theme, property) => ({ ...theme, [property]: tailwindLinear[property] }),
     {}
   )
+}
+
+function getMaxWidth (theme, { breakpoints }) {
+  return {
+    [increment * 0]: defaultTheme.maxWidth.none,
+    [increment * 1]: defaultTheme.maxWidth.xs,
+    [increment * 2]: defaultTheme.maxWidth.sm,
+    [increment * 3]: defaultTheme.maxWidth.md,
+    [increment * 4]: defaultTheme.maxWidth.lg,
+    [increment * 5]: defaultTheme.maxWidth.xl,
+    [increment * 6]: defaultTheme.maxWidth['2xl'],
+    [increment * 7]: defaultTheme.maxWidth['3xl'],
+    [increment * 8]: defaultTheme.maxWidth['4xl'],
+    [increment * 9]: defaultTheme.maxWidth['5xl'],
+    [increment * 10]: defaultTheme.maxWidth['6xl'],
+    full: defaultTheme.maxWidth.full,
+    ...breakpoints(theme('screens')),
+  } 
 }
