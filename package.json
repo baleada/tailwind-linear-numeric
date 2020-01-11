@@ -1,7 +1,7 @@
 {
   "name": "@baleada/tailwind-linear",
-  "version": "0.3.2",
-  "description": "Function that returns configurations from Tailwind's default config file, aliasing all class names so that they use a linear numeric naming convention.",
+  "version": "0.4.0",
+  "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "index.js",
   "scripts": {
     "log": "node scripts/log.js",
@@ -29,7 +29,7 @@
     "url": "https://gitlab.com/baleada/tailwind-linear/issues"
   },
   "peerDependencies": {
-    "tailwindcss": "1.x"
+    "tailwindcss": "1.2.x"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.1.2",
@@ -47,7 +47,7 @@
   },
   "ava": {
     "babel": false,
-		"compileEnhancements": false,
+    "compileEnhancements": false,
     "files": [
       "./tests/**/*.test.js"
     ],
