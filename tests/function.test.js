@@ -3,9 +3,10 @@ const test = require('ava'),
       tailwindLinear = require('../index.js')
 
 test('returns the linear numeric config object', t => {
-  const value = tailwindLinear()
+  const value = tailwindLinear(),
+        withoutMaxWidth = ({ maxWidth, ...rest }) => rest // Can't compare identities of anonymous functions, so gotta remove it
 
-  t.deepEqual(value, defaultConfig)
+  t.deepEqual(withoutMaxWidth(value), defaultConfig)
 })
 
 test('respects the "only" option', t => {

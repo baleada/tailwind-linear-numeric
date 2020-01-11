@@ -82,7 +82,21 @@ module.exports = (options = {}) => {
             [increment * 5]: defaultTheme.lineHeight.relaxed,
             [increment * 6]: defaultTheme.lineHeight.loose,
           },
-          maxWidth: getMaxWidth, // Using named function instead of anonymous function for testing purposes
+          maxWidth: (theme, { breakpoints }) => ({
+            [increment * 0]: defaultTheme.maxWidth.none,
+            [increment * 1]: defaultTheme.maxWidth.xs,
+            [increment * 2]: defaultTheme.maxWidth.sm,
+            [increment * 3]: defaultTheme.maxWidth.md,
+            [increment * 4]: defaultTheme.maxWidth.lg,
+            [increment * 5]: defaultTheme.maxWidth.xl,
+            [increment * 6]: defaultTheme.maxWidth['2xl'],
+            [increment * 7]: defaultTheme.maxWidth['3xl'],
+            [increment * 8]: defaultTheme.maxWidth['4xl'],
+            [increment * 9]: defaultTheme.maxWidth['5xl'],
+            [increment * 10]: defaultTheme.maxWidth['6xl'],
+            full: defaultTheme.maxWidth.full,
+            ...breakpoints(theme('screens')),
+          }),
           spacing: {
             px: defaultTheme.spacing.px,
             [increment * 0]: defaultTheme.spacing['0'],
@@ -132,22 +146,4 @@ module.exports = (options = {}) => {
     (theme, property) => ({ ...theme, [property]: tailwindLinear[property] }),
     {}
   )
-}
-
-function getMaxWidth (theme, { breakpoints }) {
-  return {
-    [increment * 0]: defaultTheme.maxWidth.none,
-    [increment * 1]: defaultTheme.maxWidth.xs,
-    [increment * 2]: defaultTheme.maxWidth.sm,
-    [increment * 3]: defaultTheme.maxWidth.md,
-    [increment * 4]: defaultTheme.maxWidth.lg,
-    [increment * 5]: defaultTheme.maxWidth.xl,
-    [increment * 6]: defaultTheme.maxWidth['2xl'],
-    [increment * 7]: defaultTheme.maxWidth['3xl'],
-    [increment * 8]: defaultTheme.maxWidth['4xl'],
-    [increment * 9]: defaultTheme.maxWidth['5xl'],
-    [increment * 10]: defaultTheme.maxWidth['6xl'],
-    full: defaultTheme.maxWidth.full,
-    ...breakpoints(theme('screens')),
-  } 
 }

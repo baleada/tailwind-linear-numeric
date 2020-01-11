@@ -1,5 +1,3 @@
-const getMaxWidth = require('../index.js')().maxWidth
-
 module.exports = {
   borderRadius: {
     '0': '0',
@@ -172,7 +170,6 @@ module.exports = {
     '500': '1.625',
     '600': '2'
   },
-  maxWidth: getMaxWidth,
   spacing: {
     '0': '0',
     '100': '0.25rem',
