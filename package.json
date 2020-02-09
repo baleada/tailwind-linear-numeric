@@ -1,6 +1,6 @@
 {
   "name": "@baleada/tailwind-linear",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "index.js",
   "scripts": {
@@ -43,7 +43,7 @@
     "eslint-plugin-nuxt": "^0.4.3",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "tailwindcss": "^1.2.0-canary.5"
+    "tailwindcss": "^1.2.0"
   },
   "ava": {
     "babel": false,
@@ -52,5 +52,8 @@
       "./tests/**/*.test.js"
     ],
     "verbose": true
+  },
+  "dependencies": {
+    "@baleada/tailwind-config-utils": "0.0.2"
   }
 }

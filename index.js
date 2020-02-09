@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme'),
+      { rem } = require('@baleada/tailwind-config-utils'),
       incrementable = [
         'borderRadius',
         'borderWidth',
@@ -34,6 +35,7 @@ module.exports = (options = {}) => {
           },
           boxShadow: {
             [increment * 0]: defaultTheme.boxShadow.none,
+            [increment * 2]: defaultTheme.boxShadow.xs,
             [increment * 3]: defaultTheme.boxShadow.sm,
             [increment * 4]: defaultTheme.boxShadow.default,
             [increment * 5]: defaultTheme.boxShadow.md,
@@ -81,6 +83,16 @@ module.exports = (options = {}) => {
             [increment * 4]: defaultTheme.lineHeight.normal,
             [increment * 5]: defaultTheme.lineHeight.relaxed,
             [increment * 6]: defaultTheme.lineHeight.loose,
+            ...rem({
+              [increment * 3]: defaultTheme.lineHeight['3'],
+              [increment * 4]: defaultTheme.lineHeight['4'],
+              [increment * 5]: defaultTheme.lineHeight['5'],
+              [increment * 6]: defaultTheme.lineHeight['6'],
+              [increment * 7]: defaultTheme.lineHeight['7'],
+              [increment * 8]: defaultTheme.lineHeight['8'],
+              [increment * 9]: defaultTheme.lineHeight['9'],
+              [increment * 10]: defaultTheme.lineHeight['10'],
+            })
           },
           maxWidth: (theme, { breakpoints }) => ({
             [increment * 0]: defaultTheme.maxWidth.none,
