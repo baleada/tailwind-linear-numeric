@@ -1,6 +1,6 @@
 {
-  "name": "@baleada/linear-naming",
-  "version": "0.6.0",
+  "name": "@baleada/linear-numeric",
+  "version": "0.6.1",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "tailwind.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/baleada/linear-naming.git"
+    "url": "git+https://gitlab.com/baleada/linear-numeric.git"
   },
   "homepage": "https://baleada.netlify.com",
   "keywords": [
@@ -26,7 +26,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/baleada/linear-naming/issues"
+    "url": "https://gitlab.com/baleada/linear-numeric/issues"
   },
   "peerDependencies": {
     "tailwindcss": "1.2.x"
@@ -40,7 +40,7 @@
     "eslint-plugin-ava": "^7.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.2.0",
-    "eslint-plugin-nuxt": "^0.4.3",
+    "eslint-plugin-nuxt": "^0.5.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "tailwindcss": "^1.2.0"
