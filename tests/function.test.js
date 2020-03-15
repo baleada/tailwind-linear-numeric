@@ -1,22 +1,22 @@
 const test = require('ava'),
       defaultConfig = require('./defaultConfig.stub'),
-      tailwindLinear = require('../index.js')
+      linearNumeric = require('../tailwind.js')
 
 test('returns the linear numeric config object', t => {
-  const value = tailwindLinear(),
+  const value = linearNumeric(),
         withoutMaxWidth = ({ maxWidth, ...rest }) => rest // Can't compare identities of anonymous functions, so gotta remove it
 
   t.deepEqual(withoutMaxWidth(value), defaultConfig)
 })
 
 test('respects the "only" option', t => {
-  const value = tailwindLinear({ only: ['spacing'] }).spacing
+  const value = linearNumeric({ only: ['spacing'] }).spacing
 
   t.deepEqual(value, defaultConfig.spacing)
 })
 
 test('respects the "increment" option', t => {
-  const value = tailwindLinear({ increment: 1 }),
+  const value = linearNumeric({ increment: 1 }),
         suffixes = Object.keys(value.spacing)
 
   t.assert(suffixes.includes('4'))
