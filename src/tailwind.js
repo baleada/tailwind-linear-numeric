@@ -2,26 +2,56 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import { rem, px } from '@baleada/tailwind-config-utils'
 
 const incrementable = [
+  'colors',
+  'spacing',
   'borderRadius',
   'borderWidth',
   'boxShadow',
+  'flexGrow',
+  'flexShrink',
   'fontSize',
   'fontWeight',
   'letterSpacing',
   'lineHeight',
-  'minWidth',
+  'maxHeight',
   'maxWidth',
   'minHeight',
-  'maxHeight',
-  'spacing',
+  'minWidth',
   'strokeWidth',
   'transitionDuration',
-  'colors',
+  // transitionDelay,
 ]
+
+
 
 export default function linearNumeric (options = {}) {
   const { increment = 100, only = incrementable } = options,
+        colors = getColors(increment),
         linearNumeric = {
+          colors,
+          spacing: {
+            ...px({
+              [increment * 1]: defaultTheme.spacing.px,
+            }),
+            [increment * 0]: defaultTheme.spacing['0'],
+            [increment * 1]: defaultTheme.spacing['1'],
+            [increment * 2]: defaultTheme.spacing['2'],
+            [increment * 3]: defaultTheme.spacing['3'],
+            [increment * 4]: defaultTheme.spacing['4'],
+            [increment * 5]: defaultTheme.spacing['5'],
+            [increment * 6]: defaultTheme.spacing['6'],
+            [increment * 7]: defaultTheme.spacing['8'],
+            [increment * 8]: defaultTheme.spacing['10'],
+            [increment * 9]: defaultTheme.spacing['12'],
+            [increment * 10]: defaultTheme.spacing['16'],
+            [increment * 11]: defaultTheme.spacing['20'],
+            [increment * 12]: defaultTheme.spacing['24'],
+            [increment * 13]: defaultTheme.spacing['32'],
+            [increment * 14]: defaultTheme.spacing['40'],
+            [increment * 15]: defaultTheme.spacing['48'],
+            [increment * 16]: defaultTheme.spacing['56'],
+            [increment * 17]: defaultTheme.spacing['64'],
+          },
           borderRadius: {
             [increment * 0]: defaultTheme.borderRadius.none,
             [increment * 3]: defaultTheme.borderRadius.sm,
@@ -48,6 +78,14 @@ export default function linearNumeric (options = {}) {
             [increment * 8]: defaultTheme.boxShadow['2xl'],
             [`-${increment * 4}`]: defaultTheme.boxShadow.inner,
             outline: defaultTheme.boxShadow.outline,
+          },
+          flexGrow: {
+            [increment * 0]: defaultTheme.flexGrow['0'],
+            [increment * 4]: defaultTheme.flexGrow.default,
+          },
+          flexShrink: {
+            [increment * 0]: defaultTheme.flexShrink['0'],
+            [increment * 4]: defaultTheme.flexShrink.default,
           },
           fontSize: {
             [increment * 2]: defaultTheme.fontSize.xs,
@@ -98,9 +136,9 @@ export default function linearNumeric (options = {}) {
               [increment * 10]: defaultTheme.lineHeight['10'],
             })
           },
-          minWidth: {
-            [increment * 0]: defaultTheme.minWidth['0'],
-            full: defaultTheme.minWidth.full,
+          maxHeight: {
+            full: defaultTheme.maxHeight.full,
+            screen: defaultTheme.maxHeight.screen,
           },
           maxWidth: (theme, { breakpoints }) => ({
             [increment * 0]: defaultTheme.maxWidth.none,
@@ -122,32 +160,9 @@ export default function linearNumeric (options = {}) {
             full: defaultTheme.minHeight.full,
             screen: defaultTheme.minHeight.screen,
           },
-          maxHeight: {
-            full: defaultTheme.maxHeight.full,
-            screen: defaultTheme.maxHeight.screen,
-          },
-          spacing: {
-            ...px({
-              [increment * 1]: defaultTheme.spacing.px,
-            }),
-            [increment * 0]: defaultTheme.spacing['0'],
-            [increment * 1]: defaultTheme.spacing['1'],
-            [increment * 2]: defaultTheme.spacing['2'],
-            [increment * 3]: defaultTheme.spacing['3'],
-            [increment * 4]: defaultTheme.spacing['4'],
-            [increment * 5]: defaultTheme.spacing['5'],
-            [increment * 6]: defaultTheme.spacing['6'],
-            [increment * 7]: defaultTheme.spacing['8'],
-            [increment * 8]: defaultTheme.spacing['10'],
-            [increment * 9]: defaultTheme.spacing['12'],
-            [increment * 10]: defaultTheme.spacing['16'],
-            [increment * 11]: defaultTheme.spacing['20'],
-            [increment * 12]: defaultTheme.spacing['24'],
-            [increment * 13]: defaultTheme.spacing['32'],
-            [increment * 14]: defaultTheme.spacing['40'],
-            [increment * 15]: defaultTheme.spacing['48'],
-            [increment * 16]: defaultTheme.spacing['56'],
-            [increment * 17]: defaultTheme.spacing['64'],
+          minWidth: {
+            [increment * 0]: defaultTheme.minWidth['0'],
+            full: defaultTheme.minWidth.full,
           },
           strokeWidth: {
             [increment * 0]: defaultTheme.strokeWidth['0'],
@@ -164,14 +179,8 @@ export default function linearNumeric (options = {}) {
             [increment * 7]: defaultTheme.transitionDuration['700'],
             [increment * 8]: defaultTheme.transitionDuration['1000'],
           },
-        },
-        colors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink']
-          .reduce((colors, color) => ({
-            ...colors,
-            [color]: [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: defaultTheme.colors[color][num * 100] }), {})
-          }), {})
-
-  linearNumeric.colors = colors
+          // TODO: transitionDelay is coming soon
+        }
   
   return typeof only === 'string'
     ? linearNumeric[only]
@@ -179,4 +188,24 @@ export default function linearNumeric (options = {}) {
       (theme, property) => ({ ...theme, [property]: linearNumeric[property] }),
       {}
     )
+}
+
+function getColors (increment) {
+  const colors = [
+    'gray',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'teal',
+    'blue',
+    'indigo',
+    'purple',
+    'pink'
+  ]
+  return colors
+    .reduce((shades, color) => ({
+      ...shades,
+      [color]: [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: defaultTheme.colors[color][num * 100] }), {})
+    }), {})
 }
