@@ -1,3 +1,3 @@
-const tailwindLinear = require('../index.js')
+const tailwind = require('../tailwind/index.js')
 
-console.log(tailwindLinear())
+console.log(tailwind())

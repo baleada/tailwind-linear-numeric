@@ -1,21 +1,25 @@
-const defaultTheme = require('tailwindcss/defaultTheme'),
-      { rem } = require('@baleada/tailwind-config-utils'),
-      incrementable = [
-        'borderRadius',
-        'borderWidth',
-        'boxShadow',
-        'colors',
-        'fontSize',
-        'fontWeight',
-        'letterSpacing',
-        'lineHeight',
-        'maxWidth',
-        'spacing',
-        'strokeWidth',
-        'transitionDuration',
-      ]
+import defaultTheme from 'tailwindcss/defaultTheme'
+import { rem, px } from '@baleada/tailwind-config-utils'
 
-module.exports = (options = {}) => {
+const incrementable = [
+  'borderRadius',
+  'borderWidth',
+  'boxShadow',
+  'fontSize',
+  'fontWeight',
+  'letterSpacing',
+  'lineHeight',
+  'minWidth',
+  'maxWidth',
+  'minHeight',
+  'maxHeight',
+  'spacing',
+  'strokeWidth',
+  'transitionDuration',
+  'colors',
+]
+
+export default function linearNumeric (options = {}) {
   const { increment = 100, only = incrementable } = options,
         tailwindLinear = {
           borderRadius: {
@@ -94,6 +98,10 @@ module.exports = (options = {}) => {
               [increment * 10]: defaultTheme.lineHeight['10'],
             })
           },
+          minWidth: {
+            [increment * 0]: defaultTheme.minWidth['0'],
+            full: defaultTheme.minWidth.full,
+          },
           maxWidth: (theme, { breakpoints }) => ({
             [increment * 0]: defaultTheme.maxWidth.none,
             [increment * 1]: defaultTheme.maxWidth.xs,
@@ -109,8 +117,19 @@ module.exports = (options = {}) => {
             full: defaultTheme.maxWidth.full,
             ...breakpoints(theme('screens')),
           }),
+          minHeight: {
+            [increment * 0]: defaultTheme.minHeight['0'],
+            full: defaultTheme.minHeight.full,
+            screen: defaultTheme.minHeight.screen,
+          },
+          maxHeight: {
+            full: defaultTheme.maxHeight.full,
+            screen: defaultTheme.maxHeight.screen,
+          },
           spacing: {
-            px: defaultTheme.spacing.px,
+            ...px({
+              [increment * 1]: defaultTheme.spacing.px,
+            }),
             [increment * 0]: defaultTheme.spacing['0'],
             [increment * 1]: defaultTheme.spacing['1'],
             [increment * 2]: defaultTheme.spacing['2'],
