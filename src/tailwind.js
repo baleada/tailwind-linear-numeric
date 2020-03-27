@@ -21,7 +21,7 @@ const incrementable = [
 
 export default function linearNumeric (options = {}) {
   const { increment = 100, only = incrementable } = options,
-        tailwindLinear = {
+        linearNumeric = {
           borderRadius: {
             [increment * 0]: defaultTheme.borderRadius.none,
             [increment * 3]: defaultTheme.borderRadius.sm,
@@ -171,10 +171,12 @@ export default function linearNumeric (options = {}) {
             [color]: [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: defaultTheme.colors[color][num * 100] }), {})
           }), {})
 
-  tailwindLinear.colors = colors
-
-  return only.reduce(
-    (theme, property) => ({ ...theme, [property]: tailwindLinear[property] }),
-    {}
-  )
+  linearNumeric.colors = colors
+  
+  return typeof only === 'string'
+    ? linearNumeric[only]
+    : only.reduce(
+      (theme, property) => ({ ...theme, [property]: linearNumeric[property] }),
+      {}
+    )
 }

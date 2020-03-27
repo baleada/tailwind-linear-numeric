@@ -9,8 +9,14 @@ test('returns the linear numeric config object', t => {
   t.deepEqual(withoutMaxWidth(value), defaultConfig)
 })
 
-test('respects the "only" option', t => {
+test('respects the "only" option as an array', t => {
   const value = linearNumeric({ only: ['spacing'] }).spacing
+
+  t.deepEqual(value, defaultConfig.spacing)
+})
+
+test('respects the "only" option as a string', t => {
+  const value = linearNumeric({ only: 'spacing' })
 
   t.deepEqual(value, defaultConfig.spacing)
 })
