@@ -1,6 +1,6 @@
 import test  from 'ava'
 import defaultConfig from './defaultConfig.stub'
-import linearNumeric from '../src/tailwind.js'
+import linearNumeric from '../src/tailwind'
 
 test('returns the linear numeric config object', t => {
   const value = linearNumeric(),

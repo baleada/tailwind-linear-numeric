@@ -1,29 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 import { rem, px } from '@baleada/tailwind-config-utils'
 
-const incrementable = [
-  'colors',
-  'spacing',
-  'borderRadius',
-  'borderWidth',
-  'boxShadow',
-  'flexGrow',
-  'flexShrink',
-  'fontSize',
-  'fontWeight',
-  'letterSpacing',
-  'lineHeight',
-  'maxHeight',
-  'maxWidth',
-  'minHeight',
-  'minWidth',
-  'strokeWidth',
-  'transitionDuration',
-  // transitionDelay,
-]
-
-
-
 export default function linearNumeric (options = {}) {
   const { increment = 100, only = incrementable } = options,
         colors = getColors(increment),
@@ -189,6 +166,27 @@ export default function linearNumeric (options = {}) {
       {}
     )
 }
+
+const incrementable = [
+  'colors',
+  'spacing',
+  'borderRadius',
+  'borderWidth',
+  'boxShadow',
+  'flexGrow',
+  'flexShrink',
+  'fontSize',
+  'fontWeight',
+  'letterSpacing',
+  'lineHeight',
+  'maxHeight',
+  'maxWidth',
+  'minHeight',
+  'minWidth',
+  'strokeWidth',
+  'transitionDuration',
+  // transitionDelay,
+]
 
 function getColors (increment) {
   const colors = [
