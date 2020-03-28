@@ -22,8 +22,8 @@ test('respects the "only" option as a string', t => {
 })
 
 test('respects the "increment" option', t => {
-  const value = linearNumeric({ increment: 1 }),
+  const value = linearNumeric({ increment: 42 }),
         suffixes = Object.keys(value.spacing)
 
-  t.assert(suffixes.includes('4'))
+  t.assert(suffixes.includes('42'))
 })

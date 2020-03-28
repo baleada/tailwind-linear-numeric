@@ -2,7 +2,7 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import { rem, px } from '@baleada/tailwind-config-utils'
 
 export default function linearNumeric (options = {}) {
-  const { increment = 100, only = incrementable } = options,
+  const { increment = 1, only = incrementable } = options,
         colors = getColors(increment),
         linearNumeric = {
           colors,
