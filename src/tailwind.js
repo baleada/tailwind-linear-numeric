@@ -117,21 +117,25 @@ export default function linearNumeric (options = {}) {
             full: defaultTheme.maxHeight.full,
             screen: defaultTheme.maxHeight.screen,
           },
-          maxWidth: (theme, { breakpoints }) => ({
-            [increment * 0]: defaultTheme.maxWidth.none,
-            [increment * 1]: defaultTheme.maxWidth.xs,
-            [increment * 2]: defaultTheme.maxWidth.sm,
-            [increment * 3]: defaultTheme.maxWidth.md,
-            [increment * 4]: defaultTheme.maxWidth.lg,
-            [increment * 5]: defaultTheme.maxWidth.xl,
-            [increment * 6]: defaultTheme.maxWidth['2xl'],
-            [increment * 7]: defaultTheme.maxWidth['3xl'],
-            [increment * 8]: defaultTheme.maxWidth['4xl'],
-            [increment * 9]: defaultTheme.maxWidth['5xl'],
-            [increment * 10]: defaultTheme.maxWidth['6xl'],
-            full: defaultTheme.maxWidth.full,
-            ...breakpoints(theme('screens')),
-          }),
+          maxWidth: (theme, { breakpoints }) => {
+            const defaultMaxWidth = defaultTheme.maxWidth(theme, { breakpoints })
+      
+            return {
+              [1 * 0]: defaultMaxWidth.none,
+              [1 * 1]: defaultMaxWidth.xs,
+              [1 * 2]: defaultMaxWidth.sm,
+              [1 * 3]: defaultMaxWidth.md,
+              [1 * 4]: defaultMaxWidth.lg,
+              [1 * 5]: defaultMaxWidth.xl,
+              [1 * 6]: defaultMaxWidth['2xl'],
+              [1 * 7]: defaultMaxWidth['3xl'],
+              [1 * 8]: defaultMaxWidth['4xl'],
+              [1 * 9]: defaultMaxWidth['5xl'],
+              [1 * 10]: defaultMaxWidth['6xl'],
+              full: defaultMaxWidth.full,
+              ...breakpoints(theme('screens')),
+            }
+          },
           minHeight: {
             [increment * 0]: defaultTheme.minHeight['0'],
             full: defaultTheme.minHeight.full,
