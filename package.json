@@ -1,6 +1,6 @@
 {
-  "name": "@baleada/linear-numeric",
-  "version": "0.7.3",
+  "name": "@baleada/tailwind-linear-numeric",
+  "version": "0.8.0",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "tailwind/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/baleada/linear-numeric.git"
+    "url": "git+https://gitlab.com/baleada/tailwind-linear-numeric.git"
   },
   "homepage": "https://baleada.netlify.com",
   "keywords": [
@@ -28,7 +28,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/baleada/linear-numeric/issues"
+    "url": "https://gitlab.com/baleada/tailwind-linear-numeric/issues"
   },
   "peerDependencies": {
     "tailwindcss": "1.2.x"
