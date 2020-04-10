@@ -1,7 +1,7 @@
 import test  from 'ava'
 import linearNumeric from '../src'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import expectedKeys from './expectedKeys.stub.js'
+import expectedKeys from './expectedKeys.fixture'
 
 test('respects the "only" option as an array', t => {
   const theme = linearNumeric({ only: ['spacing'] }),
