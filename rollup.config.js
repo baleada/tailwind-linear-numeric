@@ -15,8 +15,8 @@ const external = [
 export default [
   {
     external,
-    input: 'src/tailwind.js',
-    output: { file: 'tailwind/index.js', format: 'cjs' },
+    input: 'src/index.js',
+    output: { file: 'lib/index.js', format: 'cjs' },
     plugins,
   },
 ]

@@ -3,7 +3,7 @@ const { empty } = require('@baleada/prepare'),
 
 
 function prepare () {
-  empty('tailwind')
+  empty('lib')
 
   compile()
 }

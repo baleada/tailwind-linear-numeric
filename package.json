@@ -1,8 +1,8 @@
 {
   "name": "@baleada/tailwind-linear-numeric",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
-  "main": "tailwind/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "log-config": "node scripts/logConfig.js",
     "log-docs": "node scripts/logDocs.js",
