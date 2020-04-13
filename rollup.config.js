@@ -2,8 +2,9 @@ import babel from 'rollup-plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 
 const external = [
-        'tailwindcss/defaultTheme',
-        '@baleada/tailwind-config-utils',
+        'tailwindcss/defaultConfig',
+        'tailwindcss/resolveConfig',
+        '@baleada/tailwind-theme-utils',
       ],
       plugins = [
         babel({

@@ -1,11 +1,11 @@
 {
   "name": "@baleada/tailwind-linear-numeric",
-  "version": "0.8.1",
+  "version": "0.8.3",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "lib/index.js",
   "scripts": {
-    "log-config": "node scripts/logConfig.js",
-    "log-docs": "node scripts/logDocs.js",
+    "log": "node scripts/log.js",
+    "meta": "node scripts/meta.js",
     "test": "npx ava",
     "prepare": "node scripts/prepare.js"
   },
@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.9.0",
     "@nuxtjs/eslint-config": "^1.1.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "ava": "^3.5.1",
+    "ava": "^3.6.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^13.0.1",
@@ -54,6 +54,6 @@
     "tailwindcss": "^1.2.0"
   },
   "dependencies": {
-    "@baleada/tailwind-config-utils": "^0.1.0"
+    "@baleada/tailwind-theme-utils": "^0.4.0"
   }
 }
