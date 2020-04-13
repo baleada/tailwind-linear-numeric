@@ -1,6 +1,6 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { rem, px, screen } from '@baleada/tailwind-theme-utils'
+import { rem, px, screen, withoutColorPalettes } from '@baleada/tailwind-theme-utils'
 
 const resolvedDefaultTheme = resolveConfig(defaultConfig).theme
 
@@ -192,7 +192,7 @@ const incrementable = [
 ]
 
 function getColors (increment) {
-  const colors = [
+  const hues = [
     'gray',
     'red',
     'orange',
@@ -204,11 +204,11 @@ function getColors (increment) {
     'purple',
     'pink'
   ]
-  return colors
-    .reduce((shades, color) => ({
-      ...shades,
+  return hues
+    .reduce((linearNumericHues, color) => ({
+      ...linearNumericHues,
       [color]: [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: resolvedDefaultTheme.colors[color][num * 100] }), {})
-    }), {})
+    }), { ...withoutColorPalettes(resolvedDefaultTheme.colors) })
 }
 
 function getResolvedDefaultThemeValue (property, suffix) {

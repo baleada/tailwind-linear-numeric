@@ -35,3 +35,11 @@ incrementables.forEach(incrementable => {
     t.deepEqual(keys, expectedKeys[incrementable])
   })
 })
+
+test('includes non-palette colors', t => {
+  const defaultTheme = resolveConfig({ theme: linearNumeric() }),
+        hues = Object.keys(defaultTheme.theme.colors),
+        nonPaletteColors = ['black', 'white', 'transparent']
+
+  t.assert(nonPaletteColors.every(hue => hues.includes(hue)))
+})

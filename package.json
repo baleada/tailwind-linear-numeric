@@ -1,6 +1,6 @@
 {
   "name": "@baleada/tailwind-linear-numeric",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "lib/index.js",
   "scripts": {
@@ -38,6 +38,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@baleada/tailwind-theme-utils": "^0.4.1",
     "@nuxtjs/eslint-config": "^1.1.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "ava": "^3.6.0",
@@ -53,7 +54,5 @@
     "rollup-plugin-babel": "^4.4.0",
     "tailwindcss": "^1.2.0"
   },
-  "dependencies": {
-    "@baleada/tailwind-theme-utils": "^0.4.0"
-  }
+  "dependencies": {}
 }
