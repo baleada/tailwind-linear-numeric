@@ -16,4 +16,5 @@ export default {
   maxWidth: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'full', 'screen-sm', 'screen-md', 'screen-lg', 'screen-xl'],
   strokeWidth: ['0', '1', '2'],
   transitionDuration: ['1', '2', '3', '4', '5', '6', '7', '8'],
+  transitionDelay: ['1', '2', '3', '4', '5', '6', '7', '8'],
 }

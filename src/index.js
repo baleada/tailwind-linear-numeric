@@ -159,7 +159,16 @@ export default function linearNumeric (options = {}) {
             [increment * 7]: getResolvedDefaultThemeValue('transitionDuration', '700'),
             [increment * 8]: getResolvedDefaultThemeValue('transitionDuration', '1000'),
           },
-          // TODO: transitionDelay is coming soon
+          transitionDelay: {
+            [increment * 1]: getResolvedDefaultThemeValue('transitionDelay', '75'),
+            [increment * 2]: getResolvedDefaultThemeValue('transitionDelay', '100'),
+            [increment * 3]: getResolvedDefaultThemeValue('transitionDelay', '150'),
+            [increment * 4]: getResolvedDefaultThemeValue('transitionDelay', '200'),
+            [increment * 5]: getResolvedDefaultThemeValue('transitionDelay', '300'),
+            [increment * 6]: getResolvedDefaultThemeValue('transitionDelay', '500'),
+            [increment * 7]: getResolvedDefaultThemeValue('transitionDelay', '700'),
+            [increment * 8]: getResolvedDefaultThemeValue('transitionDelay', '1000'),
+          },
         }
   
   return typeof only === 'string'
@@ -188,7 +197,7 @@ const incrementable = [
   'minWidth',
   'strokeWidth',
   'transitionDuration',
-  // transitionDelay,
+  'transitionDelay',
 ]
 
 function getColors (increment) {
