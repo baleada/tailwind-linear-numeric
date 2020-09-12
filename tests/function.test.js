@@ -3,6 +3,11 @@ import linearNumeric from '../src'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import expectedKeys from './expectedKeys.fixture'
 
+const experimental = {
+  extendedSpacingScale: false,
+  uniformColorPalette: false,
+}
+
 test('respects the "only" option as an array', t => {
   const theme = linearNumeric({ only: ['spacing'] }),
         keys = Object.keys(theme),
@@ -28,7 +33,7 @@ test('respects the "increment" option', t => {
 const incrementables = Object.keys(expectedKeys)
 incrementables.forEach(incrementable => {
   test(`properly increments ${incrementable}`, t => {
-    const defaultTheme = resolveConfig({ theme: linearNumeric() }),
+    const defaultTheme = resolveConfig({ experimental, theme: linearNumeric() }),
           theme = incrementable === 'colors' ? defaultTheme.theme.colors.blue : defaultTheme.theme[incrementable],
           keys = Object.keys(theme)
   
@@ -37,7 +42,7 @@ incrementables.forEach(incrementable => {
 })
 
 test('includes non-palette colors', t => {
-  const defaultTheme = resolveConfig({ theme: linearNumeric() }),
+  const defaultTheme = resolveConfig({ experimental, theme: linearNumeric() }),
         hues = Object.keys(defaultTheme.theme.colors),
         nonPaletteColors = ['black', 'white', 'transparent']
 

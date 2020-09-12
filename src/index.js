@@ -2,7 +2,15 @@ import defaultConfig from 'tailwindcss/defaultConfig'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { rem, px, screen, withoutColorPalettes } from '@baleada/tailwind-theme-utils'
 
-const resolvedDefaultTheme = resolveConfig(defaultConfig).theme
+const resolvedDefaultTheme = resolveConfig({
+  ...defaultConfig,
+  experimental: {
+    // All set to false, likely won't handle until 2.0 releases.
+    // Spacing changes are dramatic.
+    extendedSpacingScale: false,
+    extendedFontSizeScale: false,
+  }
+}).theme
 
 export default function linearNumeric (options = {}) {
   const { increment = 1, only = incrementable } = options,
@@ -78,10 +86,13 @@ export default function linearNumeric (options = {}) {
             [increment * 9]: getResolvedDefaultThemeValue('fontSize', '4xl'),
             [increment * 10]: getResolvedDefaultThemeValue('fontSize', '5xl'),
             [increment * 11]: getResolvedDefaultThemeValue('fontSize', '6xl'),
+            // [increment * 12]: getResolvedDefaultThemeValue('fontSize', '7xl'),
+            // [increment * 13]: getResolvedDefaultThemeValue('fontSize', '8xl'),
+            // [increment * 14]: getResolvedDefaultThemeValue('fontSize', '9xl'),
           },
           fontWeight: {
-            [increment * 1]: getResolvedDefaultThemeValue('fontWeight', 'hairline'),
-            [increment * 2]: getResolvedDefaultThemeValue('fontWeight', 'thin'),
+            [increment * 1]: getResolvedDefaultThemeValue('fontWeight', 'thin'),
+            [increment * 2]: getResolvedDefaultThemeValue('fontWeight', 'extralight'),
             [increment * 3]: getResolvedDefaultThemeValue('fontWeight', 'light'),
             [increment * 4]: getResolvedDefaultThemeValue('fontWeight', 'normal'),
             [increment * 5]: getResolvedDefaultThemeValue('fontWeight', 'medium'),
