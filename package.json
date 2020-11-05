@@ -3,6 +3,7 @@
   "version": "0.9.0",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "lib/index.js",
+  "module": "lib/index.esm.js",
   "scripts": {
     "log": "node scripts/log.js",
     "meta": "node scripts/meta.js",
