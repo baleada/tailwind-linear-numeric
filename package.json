@@ -7,8 +7,7 @@
     "log": "node scripts/log.js",
     "meta": "node scripts/meta.js",
     "test": "npx ava",
-    "prepare": "node scripts/prepare.js",
-    "link": "npm link @baleada/tailwind-theme-utils"
+    "prepare": "node scripts/prepare.js"
   },
   "repository": {
     "type": "git",
@@ -32,15 +31,16 @@
     "url": "https://github.com/baleada/tailwind-linear-numeric/issues"
   },
   "peerDependencies": {
-    "tailwindcss": ">=1.8.4"
+    "tailwindcss": "^2.0.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.9.0",
-    "@baleada/tailwind-theme-utils": "^0.4.2",
     "@nuxtjs/eslint-config": "^1.1.2",
+    "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "ava": "^3.12.1",
     "babel-eslint": "^10.0.3",
@@ -52,8 +52,10 @@
     "eslint-plugin-nuxt": "^0.5.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "rollup-plugin-babel": "^4.4.0",
     "tailwindcss": "^2.0.0-alpha.6"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@baleada/tailwind-theme-utils": "^0.5.0"
+  }
 }
