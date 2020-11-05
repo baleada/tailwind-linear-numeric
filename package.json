@@ -1,6 +1,6 @@
 {
   "name": "@baleada/tailwind-linear-numeric",
-  "version": "0.8.10",
+  "version": "0.9.0",
   "description": "A linear numeric naming convention for Tailwind's default configuration.",
   "main": "lib/index.js",
   "scripts": {
