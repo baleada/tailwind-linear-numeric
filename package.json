@@ -7,7 +7,8 @@
     "log": "node scripts/log.js",
     "meta": "node scripts/meta.js",
     "test": "npx ava",
-    "prepare": "node scripts/prepare.js"
+    "prepare": "node scripts/prepare.js",
+    "link": "npm link @baleada/tailwind-theme-utils"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,7 @@
     "@baleada/tailwind-theme-utils": "^0.4.2",
     "@nuxtjs/eslint-config": "^1.1.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "ava": "^3.6.0",
+    "ava": "^3.12.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^13.0.1",
@@ -52,7 +53,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "rollup-plugin-babel": "^4.4.0",
-    "tailwindcss": "^1.8.8"
+    "tailwindcss": "^2.0.0-alpha.6"
   },
   "dependencies": {}
 }

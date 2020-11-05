@@ -1,26 +1,20 @@
-import test  from 'ava'
+import test from 'ava'
 import linearNumeric from '../src'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import expectedKeys from './expectedKeys.fixture'
 
-const experimental = {
-  extendedSpacingScale: false,
-  uniformColorPalette: false,
-}
-
 test('respects the "only" option as an array', t => {
   const theme = linearNumeric({ only: ['spacing'] }),
-        keys = Object.keys(theme),
-        expected = ['spacing']
+        keys = Object.keys(theme)
 
-  t.deepEqual(keys, expected)
+  t.assert(includesEvery({ array: keys, expected: expectedKeys.spacing }))
 })
 
 test('respects the "only" option as a string', t => {
   const theme = linearNumeric({ only: 'spacing' }),
         keys = Object.keys(theme)
 
-  t.deepEqual(keys, expectedKeys.spacing)
+  t.assert(includesEvery({ array: keys, expected: expectedKeys.spacing }))
 })
 
 test('respects the "increment" option', t => {
@@ -33,18 +27,22 @@ test('respects the "increment" option', t => {
 const incrementables = Object.keys(expectedKeys)
 incrementables.forEach(incrementable => {
   test(`properly increments ${incrementable}`, t => {
-    const defaultTheme = resolveConfig({ experimental, theme: linearNumeric() }),
-          theme = incrementable === 'colors' ? defaultTheme.theme.colors.blue : defaultTheme.theme[incrementable],
-          keys = Object.keys(theme)
+    const defaultConfig = resolveConfig({ theme: linearNumeric() }),
+          incrementableConfig = incrementable === 'colors' ? defaultConfig.theme.colors.blue : defaultConfig.theme[incrementable],
+          keys = Object.keys(incrementableConfig)
   
-    t.deepEqual(keys, expectedKeys[incrementable])
+    t.assert(includesEvery({ array: keys, expected: expectedKeys[incrementable] }))
   })
 })
 
 test('includes non-palette colors', t => {
-  const defaultTheme = resolveConfig({ experimental, theme: linearNumeric() }),
-        hues = Object.keys(defaultTheme.theme.colors),
+  const defaultConfig = resolveConfig({ theme: linearNumeric() }),
+        hues = Object.keys(defaultConfig.theme.colors),
         nonPaletteColors = ['black', 'white', 'transparent']
 
-  t.assert(nonPaletteColors.every(hue => hues.includes(hue)))
+  t.assert(includesEvery({ array: hues, expected: nonPaletteColors }))
 })
+
+function includesEvery ({ array, expected }) {
+  return expected.every(item => array.includes(item))
+}

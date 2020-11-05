@@ -13,7 +13,8 @@ const resolvedDefaultTheme = resolveConfig({
 }).theme
 
 export default function linearNumeric (options = {}) {
-  const { increment = 1, only = incrementable } = options,
+  const { increment = 1, only: rawOnly = incrementable } = options,
+        only = ensureOnly(rawOnly),
         colors = getColors(increment),
         linearNumeric = {
           colors,
@@ -22,9 +23,13 @@ export default function linearNumeric (options = {}) {
               [increment * 1]: getResolvedDefaultThemeValue('spacing', 'px'),
             }),
             [increment * 0]: getResolvedDefaultThemeValue('spacing', '0'),
+            [increment * 0.5]: getResolvedDefaultThemeValue('spacing', '0.5'),
             [increment * 1]: getResolvedDefaultThemeValue('spacing', '1'),
+            [increment * 1.5]: getResolvedDefaultThemeValue('spacing', '1.5'),
             [increment * 2]: getResolvedDefaultThemeValue('spacing', '2'),
+            [increment * 2.5]: getResolvedDefaultThemeValue('spacing', '2.5'),
             [increment * 3]: getResolvedDefaultThemeValue('spacing', '3'),
+            [increment * 3.5]: getResolvedDefaultThemeValue('spacing', '3.5'),
             [increment * 4]: getResolvedDefaultThemeValue('spacing', '4'),
             [increment * 5]: getResolvedDefaultThemeValue('spacing', '5'),
             [increment * 6]: getResolvedDefaultThemeValue('spacing', '6'),
@@ -39,6 +44,9 @@ export default function linearNumeric (options = {}) {
             [increment * 15]: getResolvedDefaultThemeValue('spacing', '48'),
             [increment * 16]: getResolvedDefaultThemeValue('spacing', '56'),
             [increment * 17]: getResolvedDefaultThemeValue('spacing', '64'),
+            [increment * 18]: getResolvedDefaultThemeValue('spacing', '72'),
+            [increment * 19]: getResolvedDefaultThemeValue('spacing', '80'),
+            [increment * 20]: getResolvedDefaultThemeValue('spacing', '96'),
           },
           borderRadius: {
             [increment * 0]: getResolvedDefaultThemeValue('borderRadius', 'none'),
@@ -46,6 +54,9 @@ export default function linearNumeric (options = {}) {
             [increment * 4]: getResolvedDefaultThemeValue('borderRadius', 'default'),
             [increment * 5]: getResolvedDefaultThemeValue('borderRadius', 'md'),
             [increment * 6]: getResolvedDefaultThemeValue('borderRadius', 'lg'),
+            [increment * 7]: getResolvedDefaultThemeValue('borderRadius', 'xl'),
+            [increment * 8]: getResolvedDefaultThemeValue('borderRadius', '2xl'),
+            [increment * 9]: getResolvedDefaultThemeValue('borderRadius', '3xl'),
             full: getResolvedDefaultThemeValue('borderRadius', 'full'),
           },
           borderWidth: {
@@ -86,9 +97,9 @@ export default function linearNumeric (options = {}) {
             [increment * 9]: getResolvedDefaultThemeValue('fontSize', '4xl'),
             [increment * 10]: getResolvedDefaultThemeValue('fontSize', '5xl'),
             [increment * 11]: getResolvedDefaultThemeValue('fontSize', '6xl'),
-            // [increment * 12]: getResolvedDefaultThemeValue('fontSize', '7xl'),
-            // [increment * 13]: getResolvedDefaultThemeValue('fontSize', '8xl'),
-            // [increment * 14]: getResolvedDefaultThemeValue('fontSize', '9xl'),
+            [increment * 12]: getResolvedDefaultThemeValue('fontSize', '7xl'),
+            [increment * 13]: getResolvedDefaultThemeValue('fontSize', '8xl'),
+            [increment * 14]: getResolvedDefaultThemeValue('fontSize', '9xl'),
           },
           fontWeight: {
             [increment * 1]: getResolvedDefaultThemeValue('fontWeight', 'thin'),
@@ -101,6 +112,8 @@ export default function linearNumeric (options = {}) {
             [increment * 8]: getResolvedDefaultThemeValue('fontWeight', 'extrabold'),
             [increment * 9]: getResolvedDefaultThemeValue('fontWeight', 'black'),
           },
+          // height: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // inset: {} All Tailwind names follow Baleada Linear Numeric scheme
           letterSpacing: {
             [`-${increment * 2}`]: getResolvedDefaultThemeValue('letterSpacing', 'tighter'),
             [`-${increment * 1}`]: getResolvedDefaultThemeValue('letterSpacing', 'tight'),
@@ -127,10 +140,8 @@ export default function linearNumeric (options = {}) {
               [increment * 10]: getResolvedDefaultThemeValue('lineHeight', '10'),
             })
           },
-          maxHeight: {
-            full: getResolvedDefaultThemeValue('maxHeight', 'full'),
-            screen: getResolvedDefaultThemeValue('maxHeight', 'screen'),
-          },
+          // margin: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // maxHeight: {} All Tailwind names follow Baleada Linear Numeric scheme
           maxWidth: {
             [increment * 0]: getResolvedDefaultThemeValue('maxWidth', 'none'),
             [increment * 1]: getResolvedDefaultThemeValue('maxWidth', 'xs'),
@@ -143,23 +154,25 @@ export default function linearNumeric (options = {}) {
             [increment * 8]: getResolvedDefaultThemeValue('maxWidth', '4xl'),
             [increment * 9]: getResolvedDefaultThemeValue('maxWidth', '5xl'),
             [increment * 10]: getResolvedDefaultThemeValue('maxWidth', '6xl'),
+            [increment * 11]: getResolvedDefaultThemeValue('maxWidth', '7xl'),
             full: getResolvedDefaultThemeValue('maxWidth', 'full'),
+            min: getResolvedDefaultThemeValue('maxWidth', 'min'),
+            max: getResolvedDefaultThemeValue('maxWidth', 'max'),
+            prose: getResolvedDefaultThemeValue('maxWidth', 'prose'),
             ...screen(resolvedDefaultTheme.screens),
           },
-          minHeight: {
-            [increment * 0]: getResolvedDefaultThemeValue('minHeight', '0'),
-            full: getResolvedDefaultThemeValue('minHeight', 'full'),
-            screen: getResolvedDefaultThemeValue('minHeight', 'screen'),
-          },
-          minWidth: {
-            [increment * 0]: getResolvedDefaultThemeValue('minWidth', '0'),
-            full: getResolvedDefaultThemeValue('minWidth', 'full'),
-          },
+          // minHeight: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // minWidth: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // padding: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // space: {} All Tailwind names follow Baleada Linear Numeric scheme
           strokeWidth: {
             [increment * 0]: getResolvedDefaultThemeValue('strokeWidth', '0'),
             [increment * 1]: getResolvedDefaultThemeValue('strokeWidth', '1'),
             [increment * 2]: getResolvedDefaultThemeValue('strokeWidth', '2'),
           },
+          // width: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // gap: {} All Tailwind names follow Baleada Linear Numeric scheme
+          // translate: {} All Tailwind names follow Baleada Linear Numeric scheme
           transitionDuration: {
             [increment * 1]: getResolvedDefaultThemeValue('transitionDuration', '75'),
             [increment * 2]: getResolvedDefaultThemeValue('transitionDuration', '100'),
@@ -182,12 +195,12 @@ export default function linearNumeric (options = {}) {
           },
         }
   
-  return typeof only === 'string'
-    ? linearNumeric[only]
-    : only.reduce(
-      (theme, property) => ({ ...theme, [property]: linearNumeric[property] }),
-      {}
-    )
+  return only.length === 1
+          ? linearNumeric[only[0]]
+          : only.reduce(
+            (theme, property) => ({ ...theme, [property]: linearNumeric[property] }),
+            {}
+          )
 }
 
 const incrementable = [
@@ -202,10 +215,7 @@ const incrementable = [
   'fontWeight',
   'letterSpacing',
   'lineHeight',
-  'maxHeight',
   'maxWidth',
-  'minHeight',
-  'minWidth',
   'strokeWidth',
   'transitionDuration',
   'transitionDelay',
@@ -213,22 +223,50 @@ const incrementable = [
 
 function getColors (increment) {
   const hues = [
+    // ALL COLORS
+    // 'rose',
+    // 'pink',
+    // 'fuchsia',
+    // 'purple',
+    // 'violet',
+    // 'indigo',
+    // 'blue',
+    // 'lightBlue',
+    // 'cyan',
+    // 'teal',
+    // 'emerald',
+    // 'green',
+    // 'lime',
+    // 'yellow',
+    // 'amber',
+    // 'orange',
+    // 'red',
+    // 'warmGray',
+    // 'trueGray',
+    // 'gray',
+    // 'coolGray',
+    // 'blueGray',
+
+    // TAILWIND DEFAULT COLORS
     'gray',
     'red',
-    'orange',
     'yellow',
     'green',
-    'teal',
     'blue',
-    'indigo',
     'purple',
-    'pink'
+    'pink',
   ]
   return hues
     .reduce((linearNumericHues, color) => ({
       ...linearNumericHues,
-      [color]: [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: resolvedDefaultTheme.colors[color][num * 100] }), {})
+      [color]: [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: resolvedDefaultTheme.colors[color][num * 100] }), {})
     }), { ...withoutColorPalettes(resolvedDefaultTheme.colors) })
+}
+
+function ensureOnly (rawOnly) {
+  return typeof rawOnly === 'string'
+          ? [rawOnly]
+          : rawOnly
 }
 
 function getResolvedDefaultThemeValue (property, suffix) {
