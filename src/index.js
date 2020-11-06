@@ -35,18 +35,19 @@ export default function linearNumeric (options = {}) {
             [increment * 6]: getResolvedDefaultThemeValue('spacing', '6'),
             [increment * 7]: getResolvedDefaultThemeValue('spacing', '8'),
             [increment * 8]: getResolvedDefaultThemeValue('spacing', '10'),
-            [increment * 9]: getResolvedDefaultThemeValue('spacing', '12'),
-            [increment * 10]: getResolvedDefaultThemeValue('spacing', '16'),
-            [increment * 11]: getResolvedDefaultThemeValue('spacing', '20'),
-            [increment * 12]: getResolvedDefaultThemeValue('spacing', '24'),
-            [increment * 13]: getResolvedDefaultThemeValue('spacing', '32'),
-            [increment * 14]: getResolvedDefaultThemeValue('spacing', '40'),
-            [increment * 15]: getResolvedDefaultThemeValue('spacing', '48'),
-            [increment * 16]: getResolvedDefaultThemeValue('spacing', '56'),
-            [increment * 17]: getResolvedDefaultThemeValue('spacing', '64'),
-            [increment * 18]: getResolvedDefaultThemeValue('spacing', '72'),
-            [increment * 19]: getResolvedDefaultThemeValue('spacing', '80'),
-            [increment * 20]: getResolvedDefaultThemeValue('spacing', '96'),
+            [increment * 9]: getResolvedDefaultThemeValue('spacing', '11'),
+            [increment * 10]: getResolvedDefaultThemeValue('spacing', '12'),
+            [increment * 11]: getResolvedDefaultThemeValue('spacing', '16'),
+            [increment * 12]: getResolvedDefaultThemeValue('spacing', '20'),
+            [increment * 13]: getResolvedDefaultThemeValue('spacing', '24'),
+            [increment * 14]: getResolvedDefaultThemeValue('spacing', '32'),
+            [increment * 15]: getResolvedDefaultThemeValue('spacing', '40'),
+            [increment * 16]: getResolvedDefaultThemeValue('spacing', '48'),
+            [increment * 17]: getResolvedDefaultThemeValue('spacing', '56'),
+            [increment * 18]: getResolvedDefaultThemeValue('spacing', '64'),
+            [increment * 19]: getResolvedDefaultThemeValue('spacing', '72'),
+            [increment * 20]: getResolvedDefaultThemeValue('spacing', '80'),
+            [increment * 21]: getResolvedDefaultThemeValue('spacing', '96'),
           },
           borderRadius: {
             [increment * 0]: getResolvedDefaultThemeValue('borderRadius', 'none'),
@@ -253,13 +254,17 @@ function getColors (increment) {
     'yellow',
     'green',
     'blue',
+    'indigo',
     'purple',
     'pink',
   ]
   return hues
     .reduce((linearNumericHues, color) => ({
       ...linearNumericHues,
-      [color]: [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({ ...config, [increment * num]: resolvedDefaultTheme.colors[color][num * 100] }), {})
+      [color]: [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({
+        ...config,
+        [increment * num]: resolvedDefaultTheme.colors[color][num * 100]
+      }), {}),
     }), { ...withoutColorPalettes(resolvedDefaultTheme.colors) })
 }
 
