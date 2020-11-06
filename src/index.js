@@ -51,7 +51,7 @@ export default function linearNumeric (options = {}) {
           borderRadius: {
             [increment * 0]: getResolvedDefaultThemeValue('borderRadius', 'none'),
             [increment * 3]: getResolvedDefaultThemeValue('borderRadius', 'sm'),
-            [increment * 4]: getResolvedDefaultThemeValue('borderRadius', 'default'),
+            [increment * 4]: getResolvedDefaultThemeValue('borderRadius', 'DEFAULT'),
             [increment * 5]: getResolvedDefaultThemeValue('borderRadius', 'md'),
             [increment * 6]: getResolvedDefaultThemeValue('borderRadius', 'lg'),
             [increment * 7]: getResolvedDefaultThemeValue('borderRadius', 'xl'),
@@ -61,7 +61,7 @@ export default function linearNumeric (options = {}) {
           },
           borderWidth: {
             [increment * 0]: getResolvedDefaultThemeValue('borderWidth', '0'),
-            [increment * 4]: getResolvedDefaultThemeValue('borderWidth', 'default'),
+            [increment * 4]: getResolvedDefaultThemeValue('borderWidth', 'DEFAULT'),
             [increment * 5]: getResolvedDefaultThemeValue('borderWidth', '2'),
             [increment * 6]: getResolvedDefaultThemeValue('borderWidth', '4'),
             [increment * 7]: getResolvedDefaultThemeValue('borderWidth', '8'),
@@ -70,7 +70,7 @@ export default function linearNumeric (options = {}) {
             [increment * 0]: getResolvedDefaultThemeValue('boxShadow', 'none'),
             [increment * 2]: getResolvedDefaultThemeValue('boxShadow', 'xs'),
             [increment * 3]: getResolvedDefaultThemeValue('boxShadow', 'sm'),
-            [increment * 4]: getResolvedDefaultThemeValue('boxShadow', 'default'),
+            [increment * 4]: getResolvedDefaultThemeValue('boxShadow', 'DEFAULT'),
             [increment * 5]: getResolvedDefaultThemeValue('boxShadow', 'md'),
             [increment * 6]: getResolvedDefaultThemeValue('boxShadow', 'lg'),
             [increment * 7]: getResolvedDefaultThemeValue('boxShadow', 'xl'),
@@ -80,11 +80,11 @@ export default function linearNumeric (options = {}) {
           },
           flexGrow: {
             [increment * 0]: getResolvedDefaultThemeValue('flexGrow', '0'),
-            [increment * 4]: getResolvedDefaultThemeValue('flexGrow', 'default'),
+            [increment * 4]: getResolvedDefaultThemeValue('flexGrow', 'DEFAULT'),
           },
           flexShrink: {
             [increment * 0]: getResolvedDefaultThemeValue('flexShrink', '0'),
-            [increment * 4]: getResolvedDefaultThemeValue('flexShrink', 'default'),
+            [increment * 4]: getResolvedDefaultThemeValue('flexShrink', 'DEFAULT'),
           },
           fontSize: {
             [increment * 2]: getResolvedDefaultThemeValue('fontSize', 'xs'),

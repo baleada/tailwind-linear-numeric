@@ -72,7 +72,7 @@ function toClassTables (propertyMetadata) {
     const tableBody = suffixMetadata.reduce((tableBody, { suffix, value, tailwindEquivalent }, index) => {
       return `\
 ${tableBody}${index === 0 ? '' : '\n'}\
-| \`.${getClass(prefix, suffix)}\` | \`.${getClass(prefix, tailwindEquivalent)}\` | \`${value}\` |\
+| \`.${toClass({ prefix, suffix })}\` | \`.${toClass({ prefix, suffix: tailwindEquivalent })}\` | \`${value}\` |\
 `
     }, '')
   
@@ -90,7 +90,7 @@ ${tableBody}\n\
   }, '')
 }
 
-function getClass (prefix, suffix) {
+function toClass ({ prefix, suffix }) {
   return suffix.startsWith('-')
     ? `-${prefix}-${suffix.split('').slice(1).join('')}`
     : `${prefix}-${suffix}`
