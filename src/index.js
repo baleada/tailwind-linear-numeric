@@ -13,7 +13,7 @@ const resolvedDefaultTheme = resolveConfig({
 }).theme
 
 export default function linearNumeric (options = {}) {
-  const { increment = 1, only: rawOnly = incrementable } = options,
+  const { increment = 1, only: rawOnly = incrementables } = options,
         only = ensureOnly(rawOnly),
         colors = getColors(increment),
         linearNumeric = {
@@ -69,7 +69,6 @@ export default function linearNumeric (options = {}) {
           },
           boxShadow: {
             [increment * 0]: getResolvedDefaultThemeValue('boxShadow', 'none'),
-            [increment * 2]: getResolvedDefaultThemeValue('boxShadow', 'xs'),
             [increment * 3]: getResolvedDefaultThemeValue('boxShadow', 'sm'),
             [increment * 4]: getResolvedDefaultThemeValue('boxShadow', 'DEFAULT'),
             [increment * 5]: getResolvedDefaultThemeValue('boxShadow', 'md'),
@@ -174,6 +173,21 @@ export default function linearNumeric (options = {}) {
           // width: {} All Tailwind names follow Baleada Linear Numeric scheme
           // gap: {} All Tailwind names follow Baleada Linear Numeric scheme
           // translate: {} All Tailwind names follow Baleada Linear Numeric scheme
+          ringOffsetWidth: {
+            [increment * 0]: getResolvedDefaultThemeValue('ringOffsetWidth', '0'),
+            [increment * 1]: getResolvedDefaultThemeValue('ringOffsetWidth', '1'),
+            [increment * 2]: getResolvedDefaultThemeValue('ringOffsetWidth', '2'),
+            [increment * 3]: getResolvedDefaultThemeValue('ringOffsetWidth', '4'),
+            [increment * 4]: getResolvedDefaultThemeValue('ringOffsetWidth', '8'),
+          },
+          ringWidth: {
+            [increment * 0]: getResolvedDefaultThemeValue('ringWidth', '0'),
+            [increment * 2]: getResolvedDefaultThemeValue('ringWidth', '1'),
+            [increment * 3]: getResolvedDefaultThemeValue('ringWidth', '2'),
+            [increment * 4]: getResolvedDefaultThemeValue('ringWidth', 'DEFAULT'),
+            [increment * 5]: getResolvedDefaultThemeValue('ringWidth', '4'),
+            [increment * 6]: getResolvedDefaultThemeValue('ringWidth', '8'),
+          },
           transitionDuration: {
             [increment * 1]: getResolvedDefaultThemeValue('transitionDuration', '75'),
             [increment * 2]: getResolvedDefaultThemeValue('transitionDuration', '100'),
@@ -204,7 +218,7 @@ export default function linearNumeric (options = {}) {
           )
 }
 
-const incrementable = [
+const incrementables = [
   'colors',
   'spacing',
   'borderRadius',
@@ -218,6 +232,8 @@ const incrementable = [
   'lineHeight',
   'maxWidth',
   'strokeWidth',
+  'ringOffsetWidth',
+  'ringWidth',
   'transitionDuration',
   'transitionDelay',
 ]
