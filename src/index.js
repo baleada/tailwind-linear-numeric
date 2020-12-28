@@ -1,16 +1,9 @@
-import defaultConfig from 'tailwindcss/defaultConfig'
-import resolveConfig from 'tailwindcss/resolveConfig'
+import defaultConfig from 'tailwindcss/defaultConfig.js'
+import resolveConfig from 'tailwindcss/resolveConfig.js'
+import colors from 'tailwindcss/colors.js'
 import { rem, px, screen, withoutColorPalettes } from '@baleada/tailwind-theme-utils'
 
-const resolvedDefaultTheme = resolveConfig({
-  ...defaultConfig,
-  experimental: {
-    // All set to false, likely won't handle until 2.0 releases.
-    // Spacing changes are dramatic.
-    extendedSpacingScale: false,
-    extendedFontSizeScale: false,
-  }
-}).theme
+const resolvedDefaultTheme = resolveConfig(defaultConfig).theme
 
 export default function linearNumeric (options = {}) {
   const { increment = 1, only: rawOnly = incrementables } = options,
@@ -76,7 +69,6 @@ export default function linearNumeric (options = {}) {
             [increment * 7]: getResolvedDefaultThemeValue('boxShadow', 'xl'),
             [increment * 8]: getResolvedDefaultThemeValue('boxShadow', '2xl'),
             [`-${increment * 4}`]: getResolvedDefaultThemeValue('boxShadow', 'inner'),
-            outline: getResolvedDefaultThemeValue('boxShadow', 'outline'),
           },
           flexGrow: {
             [increment * 0]: getResolvedDefaultThemeValue('flexGrow', '0'),
@@ -239,55 +231,24 @@ const incrementables = [
 ]
 
 function getColors (increment) {
-  const hues = [
-    // ALL COLORS
-    // 'rose',
-    // 'pink',
-    // 'fuchsia',
-    // 'purple',
-    // 'violet',
-    // 'indigo',
-    // 'blue',
-    // 'lightBlue',
-    // 'cyan',
-    // 'teal',
-    // 'emerald',
-    // 'green',
-    // 'lime',
-    // 'yellow',
-    // 'amber',
-    // 'orange',
-    // 'red',
-    // 'warmGray',
-    // 'trueGray',
-    // 'gray',
-    // 'coolGray',
-    // 'blueGray',
+  const hues = Object.entries(colors)
+    .filter(([_, value]) => typeof value !== 'string')
+    .map(([hue]) => hue)
 
-    // TAILWIND DEFAULT COLORS
-    'gray',
-    'red',
-    'yellow',
-    'green',
-    'blue',
-    'indigo',
-    'purple',
-    'pink',
-  ]
   return hues
     .reduce((linearNumericHues, color) => ({
       ...linearNumericHues,
       [color]: [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((config, num) => ({
         ...config,
-        [increment * num]: resolvedDefaultTheme.colors[color][num * 100]
+        [increment * num]: colors[color][num * 100]
       }), {}),
-    }), { ...withoutColorPalettes(resolvedDefaultTheme.colors) })
+    }), { ...withoutColorPalettes(defaultConfig.theme.colors) })
 }
 
 function ensureOnly (rawOnly) {
   return typeof rawOnly === 'string'
-          ? [rawOnly]
-          : rawOnly
+    ? [rawOnly]
+    : rawOnly
 }
 
 function getResolvedDefaultThemeValue (property, suffix) {

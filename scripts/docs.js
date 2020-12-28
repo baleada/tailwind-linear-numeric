@@ -1,19 +1,20 @@
-const fs = require('fs'),
-      linearNumeric = require('../lib/index.js'),
-      defaultConfig = require('tailwindcss/defaultConfig'),
-      resolveConfig = require('tailwindcss/resolveConfig'),
-      linearNumericTheme = resolveConfig({ theme: linearNumeric() }).theme,
-      resolvedDefaultTheme = resolveConfig(defaultConfig).theme
+import { writeFileSync } from 'fs'
+import linearNumeric from '../lib/index.js'
+import defaultConfig from 'tailwindcss/defaultConfig.js'
+import resolveConfig from 'tailwindcss/resolveConfig.js'
 
+const linearNumericTheme = resolveConfig({ theme: linearNumeric() }).theme,
+      resolvedDefaultTheme = resolveConfig(defaultConfig).theme
   
 function meta () {
   const linearNumericProperties = Object.keys((({ colors, ...rest }) => ({ blue: colors.blue, ...rest }))(linearNumeric())),
         propertyMetadata = linearNumericProperties.map(property => {
+          console.log(property)
           const suffixes = property === 'blue' 
                   ? Object.keys(linearNumericTheme.colors.blue) 
                   : property === 'spacing'
                     ? Object.keys(linearNumeric({ only: 'spacing' }))
-                    : Object.keys(linearNumericTheme[property])
+                    : Object.keys(linearNumericTheme[property]),
                 suffixMetadata = suffixes.map(suffix => {
                   const value = property === 'blue' 
                     ? linearNumericTheme.colors.blue[suffix] 
@@ -60,15 +61,14 @@ order: 1\n\
 In this article, you'll find a class reference table for each of the properties customized by Baleada Tailwind Linear, matching up their linear numeric class names with the original Tailwind names.\n\
 `
 
-  fs.writeFileSync(
-    './metadata/class-references.md',
+  writeFileSync(
+    './docs/class-references.md',
     `${frontMatter}\n\n${classTables}`
   )
 }
 
 function toClassTables (propertyMetadata) {
   return propertyMetadata.reduce((classTables, { name, prefix, notes, suffixMetadata }) => {
-    console.log(name)
     const tableBody = suffixMetadata.reduce((tableBody, { suffix, value, tailwindEquivalent }, index) => {
       return `\
 ${tableBody}${index === 0 ? '' : '\n'}\
@@ -175,6 +175,16 @@ const prefixes = {
   strokeWidth: {
     name: 'Stroke width',
     prefix: 'stroke',
+    notes: '',
+  },
+  ringOffsetWidth: {
+    name: 'Ring offset width',
+    prefix: 'ring-offset',
+    notes: '',
+  },
+  ringWidth: {
+    name: 'Ring width',
+    prefix: 'ring',
     notes: '',
   },
   transitionDuration: {
