@@ -43,7 +43,7 @@
   "devDependencies": {
     "@baleada/prepare": "^0.4.16",
     "rollup": "^2.35.1",
-    "tailwindcss": "^2.0.1-compat",
+    "tailwindcss": "^2.2.4",
     "uvu": "^0.5.1"
   }
 }

@@ -231,9 +231,19 @@ const incrementables = [
 ]
 
 function getColors (increment) {
-  const hues = Object.entries(colors)
-    .filter(([_, value]) => typeof value !== 'string')
-    .map(([hue]) => hue)
+  const hues = []
+
+  for (const hue in colors) {
+    if (hue === 'lightBlue') {
+      continue
+    }
+
+    if (typeof colors[hue] === 'string') {
+      continue
+    }
+
+    hues.push(hue)
+  }
 
   return hues
     .reduce((linearNumericHues, color) => ({

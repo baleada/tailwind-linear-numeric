@@ -62,7 +62,7 @@ In this article, you'll find a class reference table for each of the properties 
 `
 
   writeFileSync(
-    './docs/class-references.md',
+    './docs/class-references.prose',
     `${frontMatter}\n\n${classTables}`
   )
 }
