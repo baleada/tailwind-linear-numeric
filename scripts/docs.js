@@ -91,9 +91,9 @@ ${tableBody}\n\
 }
 
 function toClass ({ prefix, suffix }) {
-  return suffix.startsWith('-')
+  return (suffix.startsWith('-')
     ? `-${prefix}-${suffix.split('').slice(1).join('')}`
-    : `${prefix}-${suffix}`
+    : `${prefix}-${suffix}`).replace(/-DEFAULT$/, '')
 }
 
 const prefixes = {
@@ -106,6 +106,11 @@ const prefixes = {
     name: 'Spacing',
     prefix: 'h',
     notes: '`height` is shown here as an example, but spacing also affects `width`, `margin`, `padding`, `translate`, `gap`, `space`, and `divide` utilities.',
+  },
+  blur: {
+    name: 'Blur',
+    prefix: 'blur',
+    notes: '',
   },
   borderRadius: {
     name: 'Border radius',
@@ -120,6 +125,11 @@ const prefixes = {
   boxShadow: {
     name: 'Box shadow',
     prefix: 'shadow',
+    notes: '',
+  },
+  dropShadow: {
+    name: 'Drop shadow',
+    prefix: 'drop-shadow',
     notes: '',
   },
   flexGrow: {
