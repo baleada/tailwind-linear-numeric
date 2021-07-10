@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs'
-import linearNumeric from '../lib/index.js'
+import { linearNumeric } from '../lib/index.js'
 import defaultConfig from 'tailwindcss/defaultConfig.js'
 import resolveConfig from 'tailwindcss/resolveConfig.js'
 

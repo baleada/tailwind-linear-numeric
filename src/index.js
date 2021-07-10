@@ -5,7 +5,7 @@ import { rem, px, screen, withoutColorPalettes } from '@baleada/tailwind-theme-u
 
 const resolvedDefaultTheme = resolveConfig(defaultConfig).theme
 
-export default function linearNumeric (options = {}) {
+export function linearNumeric (options = {}) {
   const { increment = 1, only: rawOnly = incrementables } = options,
         only = ensureOnly(rawOnly),
         colors = getColors(increment),

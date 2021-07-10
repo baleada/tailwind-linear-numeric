@@ -1,6 +1,6 @@
 import { suite as createSuite } from 'uvu'
 import * as assert from 'uvu/assert'
-import linearNumeric from '../../src/index.js'
+import { linearNumeric } from '../../src/index.js'
 import expectedKeys from '../fixtures/expectedKeys.js'
 import resolveConfig from 'tailwindcss/resolveConfig.js'
 import colors from 'tailwindcss/colors.js'
