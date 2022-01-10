@@ -1,25 +1,25 @@
 import { writeFileSync } from 'fs'
-import { linearNumeric } from '../lib/index.js'
-import defaultConfig from 'tailwindcss/defaultConfig.js'
-import resolveConfig from 'tailwindcss/resolveConfig.js'
+import { getLinearNumeric } from '../src'
+import defaultConfig from 'tailwindcss/defaultConfig'
+import resolveConfig from 'tailwindcss/resolveConfig'
 
-const linearNumericTheme = resolveConfig({ theme: linearNumeric() }).theme,
+const linearNumericTheme = resolveConfig({ theme: getLinearNumeric() }).theme,
       resolvedDefaultTheme = resolveConfig(defaultConfig).theme
   
 function meta () {
-  const linearNumericProperties = Object.keys((({ colors, ...rest }) => ({ blue: colors.blue, ...rest }))(linearNumeric())),
+  const linearNumericProperties = Object.keys((({ colors, ...rest }) => ({ blue: colors.blue, ...rest }))(getLinearNumeric())),
         propertyMetadata = linearNumericProperties.map(property => {
           console.log(property)
           const suffixes = property === 'blue' 
                   ? Object.keys(linearNumericTheme.colors.blue) 
                   : property === 'spacing'
-                    ? Object.keys(linearNumeric({ only: 'spacing' }))
+                    ? Object.keys(getLinearNumeric({ only: 'spacing' }))
                     : Object.keys(linearNumericTheme[property]),
                 suffixMetadata = suffixes.map(suffix => {
                   const value = property === 'blue' 
                     ? linearNumericTheme.colors.blue[suffix] 
                     : property === 'spacing'
-                      ? linearNumeric().spacing[suffix]
+                      ? getLinearNumeric().spacing[suffix]
                       : linearNumericTheme[property][suffix]
                       
                   return {
@@ -62,7 +62,7 @@ In this article, you'll find a class reference table for each of the properties 
 `
 
   writeFileSync(
-    './docs/class-references.prose',
+    './docs/class-references.md',
     `${frontMatter}\n\n${classTables}`
   )
 }
@@ -105,7 +105,7 @@ const prefixes = {
   spacing: {
     name: 'Spacing',
     prefix: 'h',
-    notes: '`height` is shown here as an example, but spacing also affects `width`, `margin`, `padding`, `translate`, `gap`, `space`, and `divide` utilities.',
+    notes: '`height` is shown here as an example, but spacing affects several other Tailwind core plugins. [Visit the Tailwind docs](https://tailwindcss.com/docs/customizing-spacing) for a full list.',
   },
   blur: {
     name: 'Blur',
@@ -162,29 +162,24 @@ const prefixes = {
     prefix: 'leading',
     notes: '',
   },
-  maxHeight: {
-    name: 'Max height',
-    prefix: 'max-h',
-    notes: '',
-  },
   maxWidth: {
     name: 'Max width',
     prefix: 'max-w',
     notes: '',
   },
-  minHeight: {
-    name: 'Min height',
-    prefix: 'min-h',
-    notes: '',
-  },
-  minWidth: {
-    name: 'Min width',
-    prefix: 'min-w',
-    notes: '',
-  },
   strokeWidth: {
     name: 'Stroke width',
     prefix: 'stroke',
+    notes: '',
+  },
+  outlineOffset: {
+    name: 'Outline offset',
+    prefix: 'ring-offset',
+    notes: '',
+  },
+  outlineWidth: {
+    name: 'Outline width',
+    prefix: 'ring',
     notes: '',
   },
   ringOffsetWidth: {
@@ -197,6 +192,16 @@ const prefixes = {
     prefix: 'ring',
     notes: '',
   },
+  textDecorationThickness: {
+    name: 'Text decoration thickness',
+    prefix: 'decoration',
+    notes: '',
+  },
+  textUnderlineOffset: {
+    name: 'Text underline offset',
+    prefix: 'underline',
+    notes: '',
+  },
   transitionDuration: {
     name: 'Transition duration',
     prefix: 'duration',
@@ -207,35 +212,10 @@ const prefixes = {
     prefix: 'delay',
     notes: '',
   },
-  height: {
-    name: 'Height',
-    prefix: 'h',
-    notes: '',
-  },
-  width: {
-    name: 'Width',
-    prefix: 'w',
-    notes: '',
-  },
   inset: {
     name: 'Inset',
     prefix: 'top',
     notes: '`top` is shown here as an example, but the same configuration applies for `right`, `bottom`, and `left`.',
-  },
-  objectPosition: {
-    name: 'Object position',
-    prefix: 'object',
-    notes: '',
-  },
-  opacity: {
-    name: 'Opacity',
-    prefix: 'opacity',
-    notes: '',
-  },
-  zIndex: {
-    name: 'Z-index',
-    prefix: 'z',
-    notes: '',
   },
 }
 
