@@ -1,6 +1,6 @@
 import defaultConfig from 'tailwindcss/defaultConfig'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { px, rem, screen, withoutColorPalettes } from '@baleada/tailwind-theme-utils'
+import { px, rem, screen, withoutColorPalettes as toNamedColors } from '@baleada/tailwind-theme-utils'
 import { TailwindCorePlugin } from 'tailwindcss/tailwind-config'
 
 const resolvedDefaultTheme = resolveConfig(defaultConfig).theme
@@ -325,7 +325,7 @@ function getColors (increment: number): { [key: string]: string } {
   return hues
     .reduce(
       (linearNumericHues, color) => {
-        linearNumericHues[color] = [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce(
+        linearNumericHues[color] = [0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9.5].reduce(
           (config, num) => {
             config[increment * num] = resolvedDefaultTheme.colors[color][num * 100]
             return config
@@ -335,7 +335,8 @@ function getColors (increment: number): { [key: string]: string } {
 
         return linearNumericHues
       },
-      withoutColorPalettes(resolvedDefaultTheme.colors)
+      // @ts-expect-error
+      toNamedColors(resolvedDefaultTheme.colors)
     )
 }
 

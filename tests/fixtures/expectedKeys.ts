@@ -3,7 +3,7 @@ function toLinearKeys (end: number, start: number, prefix: string = '') {
 }
 
 export default {
-  colors: ['0.5', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+  colors: ['0.5', '1', '2', '3', '4', '5', '6', '7', '8', '9', '9.5'],
   spacing: ['0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', ...toLinearKeys(29, 4), 'px-1'],
   blur: ['0', ...toLinearKeys(9, 3)],
   borderRadius: ['0', ...toLinearKeys(9, 3), 'full'],
